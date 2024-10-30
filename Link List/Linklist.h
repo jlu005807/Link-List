@@ -363,6 +363,43 @@ public:
 		return;
 	}
 
+	//利用头插法逆转链表
+	void Reverse_HeadInsert()
+	{
+		LNode<T>* cur = this->next;
+
+		//空链表
+		if (cur == this)return;
+
+		//第二个结点最后为尾结点
+		LNode<T>* tail = cur;
+
+		//断开this和cur
+		this->next = nullptr;
+		cur->prior = nullptr;
+
+		while (cur->next != this)
+		{
+			LNode<T>* q = cur;
+
+			//cur后移
+			cur = cur->next;
+
+			//插入q到this后面,cur前面
+			this->next = q;
+			q->prior = this;
+
+			q->next = cur;
+			cur->prior = q;
+		}
+
+		//处理首尾相连
+		tail->next = this;
+		this->prior = tail;
+
+		return;
+	}
+
 
 	void Reverse()
 	{
@@ -388,7 +425,9 @@ public:
 		}
 		
 		LNode<T>* new_head = prev->prior;
+
 		this->next = new_head;
+
 		new_head->prior = this;
 
 	}
@@ -440,6 +479,7 @@ public:
 
 		Quick_Sort(left, keyptr
 		);
+
 		Quick_Sort(keyptr->next, right);
 
 
