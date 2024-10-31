@@ -22,8 +22,9 @@ void TestStaticList()
 {
 	Static_List<int> list(10); // 创建容量为10的静态链表
 
-	list.ListInsert(1, 10); // 在第一个位置插入10
+	list.ListInsert(1, 10); // 在第一个位置前插入10
 	list.ListInsert(2, 20); // 在第二个位置插入20
+	list.ListInsert(2, 40); // 在第二个位置插入20
 	list.ListInsert(3, 30); // 在第三个位置插入30
 
 	std::cout << "List length: " << list.ListLength() << std::endl;

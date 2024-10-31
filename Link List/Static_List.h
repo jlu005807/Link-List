@@ -155,7 +155,7 @@ public:
 		int cur = capacity - 1;
 
 		//找到Node前面一个节点
-		for (int i = 0; i < Node; i++)
+		for (int i = 0; i < Node-1; i++)
 		{
 			cur = Datas[cur].cur;//类似链表的p=p->next
 		}
@@ -217,7 +217,7 @@ public:
 		int i = Datas[capacity-1].cur;//从第一个数据结点开始搜索
 		while (i != 0)//将所有的数据结点打印
 		{
-			printf("%c-->", Datas[i].data);
+			std::cout << Datas[i].data << "-->";
 			i = Datas[i].cur; // p = p->next;
 		}
 		printf("Nul.\n");

@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Linklist.h" />
+    <ClInclude Include="Skip_List.h" />
     <ClInclude Include="Static_List.h" />
   </ItemGroup>
   <ItemGroup>
