@@ -1,5 +1,6 @@
 #include"Linklist.h"
 #include"Static_List.h"
+#include"Skip_List.h"
 using namespace std;
 
 void TestLinkList()
@@ -39,6 +40,56 @@ void TestStaticList()
 
 }
 
+void TestSkipList()
+{
+	SkipList<int, int> L;
+	map<int, int> M;
+
+	clock_t s = clock();
+
+	for (int i = 0; i < 1e5; ++i) {
+		int key = rand()%INT_MAX-1, value = rand();
+		L[key] = value;
+	}
+
+	for (int i = 0; i < 1e5; ++i) {
+		int key = rand();
+		if (i & 1) {
+			L.erase(key);
+		}
+		else {
+			int r1 = L.count(key) ? L[key] : 0;
+		}
+	}
+
+	clock_t e = clock();
+	std::cout << "SkipLIst Time elapsed: " << (double)(e - s) / CLOCKS_PER_SEC << std::endl;
+	// about 0.2s
+
+	s = clock();
+
+	for (int i = 0; i < 1e5; ++i) {
+		int key = rand() % INT_MAX - 1, value = rand();
+		M[key] = value;
+	}
+
+	for (int i = 0; i < 1e5; ++i) {
+		int key = rand();
+		if (i & 1) {
+			M.erase(key);
+		}
+		else {
+			int r2 = M.count(key) ? M[key] : 0;
+		}
+	}
+
+    e = clock();
+	std::cout << "Map Time elapsed: " << (double)(e - s) / CLOCKS_PER_SEC << std::endl;
+	// about 0.2s
+
+	return;
+}
+
 int main()
 {
 	TestLinkList();
@@ -47,4 +98,6 @@ int main()
 	TestStaticList();
 	system("Pause");
 
+	TestSkipList();
+	system("Pause");
 }
